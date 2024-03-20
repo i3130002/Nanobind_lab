@@ -2,6 +2,8 @@
 #include <nanobind/stl/string.h>
 #include <nanobind/stl/vector.h>
 #include <nanobind/stl/shared_ptr.h>
+#include <nanobind/stl/function.h>
+
 #include "code.cpp"
 
 namespace nb = nanobind;
@@ -29,5 +31,8 @@ NB_MODULE(nanobind_example_ext, m) {
        .def("print_vector", &GeekyOdyssey::print_vector, nb::arg("numbers"))
        .def_static("sprint", &GeekyOdyssey::sprint)
        .def("get_shared_foo", &GeekyOdyssey::get_shared_foo)
+       .def("set_callable", &GeekyOdyssey::set_callable, nb::arg("callable"))
+       .def_rw("callable", &GeekyOdyssey::callable)
+       .def("call_callable", &GeekyOdyssey::call_callable)
        ;
 }

@@ -64,3 +64,27 @@ def test_print_vector():
     geekyOdyssey.print_vector([1,2,3,4,5,6])
     assert True
 
+
+def test_callable_via_set_function():
+    global last_called_message
+    last_called_message = ""
+    geekyOdyssey = nanobind_example.GeekyOdyssey()
+    def func(msg):
+        global last_called_message
+        last_called_message = msg
+    geekyOdyssey.set_callable(func)
+    geekyOdyssey.call_callable("hello")
+    assert last_called_message == "hello"
+
+
+
+def test_callable_via_direct_assignment():
+    global last_called_message
+    last_called_message = ""
+    geekyOdyssey = nanobind_example.GeekyOdyssey()
+    def func(msg):
+        global last_called_message
+        last_called_message = msg
+    geekyOdyssey.callable = func
+    geekyOdyssey.call_callable("hello")
+    assert last_called_message == "hello"

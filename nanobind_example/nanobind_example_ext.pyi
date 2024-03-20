@@ -28,6 +28,16 @@ class GeekyOdyssey:
     def __init__(self) -> None:
         ...
     
+    def call_callable(self, arg: str, /) -> None:
+        ...
+    
+    @property
+    def callable(self) -> Callable[[str], None]:
+        ...
+    @callable.setter
+    def callable(self, arg: Callable[[str], None], /) -> None:
+        ...
+    
     def get_shared_foo(self) -> nanobind_example.nanobind_example_ext.Foo:
         ...
     
@@ -47,6 +57,9 @@ class GeekyOdyssey:
         ...
     
     def print_vector(self, numbers: list[int]) -> None:
+        ...
+    
+    def set_callable(self, callable: Callable[[str], None]) -> None:
         ...
     
     def sprint() -> str:

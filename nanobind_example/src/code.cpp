@@ -2,7 +2,8 @@
 #include <iostream>
 #include <vector>
 #include <memory>
-
+#include <functional>
+#include <sstream>
 
 
 int mul(int a, int b){
@@ -24,6 +25,16 @@ public:
     static int instances;
     int name;
     std::shared_ptr<Foo> foo;
+    std::function<void(std::string)> callable;
+
+    void set_callable(std::function<void(std::string)> _callable){
+        callable = _callable;
+    }
+
+    void call_callable(std::string message){
+        callable(message);
+    }
+
 
     GeekyOdyssey(){
         ++instances;
