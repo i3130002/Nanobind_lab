@@ -22,16 +22,12 @@ NB_MODULE(nanobind_example_ext, m) {
 
     nb::class_<GeekyOdyssey>(m, "GeekyOdyssey")
        .def(nb::init<>())
-      //  .def_rw_static("instances", &GeekyOdyssey::instances)
-      //  .def_rw("name", &GeekyOdyssey::name)
-      //  .def("print", &GeekyOdyssey::print)
-      //  .def("get_vector", &GeekyOdyssey::get_vector)
-      //  .def("print_vector", &GeekyOdyssey::print_vector, nb::arg("numbers"))
-      //  .def_static("sprint", &GeekyOdyssey::sprint)
-
+       .def_rw_static("instances", &GeekyOdyssey::instances)
+       .def_rw("name", &GeekyOdyssey::name)
+       .def("print", &GeekyOdyssey::print)
+       .def("get_vector", &GeekyOdyssey::get_vector)
+       .def("print_vector", &GeekyOdyssey::print_vector, nb::arg("numbers"))
+       .def_static("sprint", &GeekyOdyssey::sprint)
        .def("get_shared_foo", &GeekyOdyssey::get_shared_foo)
-    //    .def("set_shared_int", &GeekyOdyssey::set_shared_int, nb::arg("num"))
-    //    .def_rw("shared_vint", &GeekyOdyssey::shared_vint)
-
        ;
 }
