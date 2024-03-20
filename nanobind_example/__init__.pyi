@@ -46,6 +46,9 @@ class GeekyOdyssey:
     
     instances: int
     
+    def loop(self, count: int) -> None:
+        ...
+    
     @property
     def name(self) -> int:
         ...

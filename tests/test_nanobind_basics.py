@@ -1,6 +1,7 @@
 import nanobind_example
 from icecream import ic
 import time
+import timeit
 
 def test_shared_ptr_foo():
     shared_foo_test = nanobind_example.GeekyOdyssey()
@@ -88,3 +89,21 @@ def test_callable_via_direct_assignment():
     geekyOdyssey.callable = func
     geekyOdyssey.call_callable("hello")
     assert last_called_message == "hello"
+
+
+def loop(count:int):
+    for i in range(count):
+        for j in range(count):
+            pass
+
+
+def test_loop_performance():
+    geekyOdyssey = nanobind_example.GeekyOdyssey()
+
+    python_time = timeit.timeit(stmt=lambda: loop(1_000_0), number=1)
+    cpp_time = timeit.timeit(stmt=lambda: geekyOdyssey.loop(1_000_0), number=1)
+    ic(python_time)
+    ic(cpp_time)
+    ic(python_time/cpp_time)
+
+    assert python_time > cpp_time

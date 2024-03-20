@@ -34,5 +34,6 @@ NB_MODULE(nanobind_example_ext, m) {
        .def("set_callable", &GeekyOdyssey::set_callable, nb::arg("callable"))
        .def_rw("callable", &GeekyOdyssey::callable)
        .def("call_callable", &GeekyOdyssey::call_callable)
+       .def("loop", &GeekyOdyssey::loop, nb::arg("count"))
        ;
 }

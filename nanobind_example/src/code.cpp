@@ -63,16 +63,18 @@ public:
         return foo;
     }
 
-
-    // void set_shared_vint(std::shared_ptr<std::vector<int>> new_vint){
-    //     shared_vint = num;
-    // }
-
-
-
     void print_vector(std::vector<int> numbers){
         for (int num : numbers) {
             std::cout << num << " ";
+        }
+    }
+
+    void loop(int count){
+        unsigned long long sum = 0;
+        for (int i = 0; i < count; ++i) {
+            for (int j = 0; j < count; ++j) {
+                sum ++;
+            }
         }
     }
 
