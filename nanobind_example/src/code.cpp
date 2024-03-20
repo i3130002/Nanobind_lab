@@ -1,31 +1,34 @@
 #include <string>
 #include <iostream>
 #include <vector>
-// #include <memory>
-#include <nanobind/nanobind.h>
+#include <memory>
 
-#include <nanobind/stl/shared_ptr.h>
 
 
 int mul(int a, int b){
     return a * b;
 }
 
+class Foo{
+    public:
+    std::string name;
+
+    void print(){
+        std::cout<<name<<std::endl;
+    }
+};
 
 
 class GeekyOdyssey{
 public:
     static int instances;
     int name;
-    std::shared_ptr<std::vector<int>> shared_vint;
+    std::shared_ptr<Foo> foo;
 
     GeekyOdyssey(){
         ++instances;
         name = -2;
-        shared_vint = std::make_shared<std::vector<int>>();
-        shared_vint->push_back(100);
-        shared_vint->push_back(200);
-        shared_vint->push_back(300);
+        foo = std::make_shared<Foo>();
     }
     std::string print(){
         return "GeekyOdyssey>print";
@@ -45,8 +48,8 @@ public:
 
     }
 
-    std::shared_ptr<std::vector<int>> get_shared_vint(){
-        return shared_vint;
+    std::shared_ptr<Foo> get_shared_foo(){
+        return foo;
     }
 
 

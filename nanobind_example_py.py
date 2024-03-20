@@ -1,6 +1,6 @@
 import nanobind_example
 from icecream import ic
-
+import time
 # ic(nanobind_example.add(1, 2))
 # ic(nanobind_example.mul(1, 2))
 # ic(nanobind_example.mul2(1, 2))
@@ -28,3 +28,16 @@ geekyOdyssey = nanobind_example.GeekyOdyssey()
 
 # geekyOdyssey.set_shared_int(10)
 # ic(shared_int)
+
+
+shared_foo_test = nanobind_example.GeekyOdyssey()
+foo1 = shared_foo_test.get_shared_foo()
+foo1.name = "foo1"
+print("foo1.print():", end=" ", flush=True)
+foo1.print()
+
+foo2 = shared_foo_test.get_shared_foo()
+print("foo2.print():", end=" ", flush=True)
+foo2.print()
+
+assert foo2.name == "foo1"
